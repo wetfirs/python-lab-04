@@ -1,4 +1,5 @@
 def bubble_sort(n: list[int]) -> list[int]:
+    """Сортирует список целых чисел методом пузырька"""
     if not isinstance(n, list):
         raise TypeError("n должен быть списком")
     if any(type(x) is not int for x in n):
@@ -19,6 +20,7 @@ def bubble_sort(n: list[int]) -> list[int]:
 
 
 def merge(left: list[int], right: list[int]) -> list[int]:
+    """Объединяет два отсортированных списка в один"""
     i = j = 0
     res  = []
     while i < len(left) and j < len(right):
@@ -34,6 +36,7 @@ def merge(left: list[int], right: list[int]) -> list[int]:
 
 
 def merge_sort(n: list[int]) -> list[int]:
+    """Сортирует список целых чисел методом слияния"""
     if not isinstance(n, list):
         raise TypeError("n должен быть списком")
     if any(type(x) is not int for x in n):

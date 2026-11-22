@@ -13,6 +13,7 @@ from .sorting import bubble_sort, merge_sort
 
 
 def measure_sort(sort_function, data: list[int], repeats: int = 5) -> float:
+    """Возвращает медианное время выполнения сортировки в секундах"""
     if type(repeats) is not int:
         raise TypeError("repeats должно быть целым числом")
     if repeats < 5:
@@ -28,6 +29,7 @@ def measure_sort(sort_function, data: list[int], repeats: int = 5) -> float:
     return statistics.median(times)
 
 def run_benchmark():
+    """Измеряет время работы сортировок на разных наборах данных"""
     sorts = {
         "bubble": bubble_sort,
         "merge": merge_sort
@@ -39,23 +41,28 @@ def run_benchmark():
         "duplicates": lambda n, seed: duplicates_generator(n, seed),
         "nearly_sorted": lambda n, seed: nearly_sorted_generator(n, seed)
     }
-    sizes = [100, 1000, 10000]
+    sizes_by_sort = {
+    "bubble": [100, 1_000, 10_000],
+    "merge": [10_000, 100_000, 1_000_000]
+    }
     results = []
-    for size in sizes:
-        for generator_name, generator_func in generators.items():
-            data = generator_func(size, 42)
-            for sort_name, sort_func in sorts.items():
+    for sort_name, sort_func in sorts.items():
+        for size in sizes_by_sort[sort_name]:
+            for generator_name, generator_func in generators.items():
+                data = generator_func(size, 42)
                 elapsed = measure_sort(sort_func, data)
+
                 result = {
                     "size": size,
                     "generator": generator_name,
                     "sort": sort_name,
-                    "time": elapsed
+                    "time": elapsed,
                 }
                 results.append(result)
     return results
 
 def save_results(results, filename="results.csv"):
+    """Сохраняет результаты измерений в CSV-файл"""
     with open(filename, "w", encoding="utf-8", newline="") as file:
         writer = csv.DictWriter(file, fieldnames=["size", "generator", "sort", "time"])
         writer.writeheader()

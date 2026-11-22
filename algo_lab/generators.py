@@ -2,6 +2,7 @@ import random
 
 
 def random_generator(n: int, seed: int) -> list[int]:
+    """Создаёт список из n случайных целых чисел от -10000 до 10000"""
     if type(n) is not int:
         raise TypeError("n должно быть целым числом")
     if n < 0:
@@ -16,6 +17,7 @@ def random_generator(n: int, seed: int) -> list[int]:
 
 
 def sorted_generator(n: int) -> list[int]:
+    """Создаёт возрастающий список целых чисел от 0 до n - 1"""
     if type(n) is not int:
         raise TypeError("n должно быть целым числом")
     if n < 0:
@@ -25,6 +27,7 @@ def sorted_generator(n: int) -> list[int]:
 
 
 def reverse_generator(n: int) -> list[int]:
+    """Создаёт убывающий список целых чисел от n - 1 до 0"""
     if type(n) is not int:
         raise TypeError("n должно быть целым числом")
     if n < 0:
@@ -34,6 +37,7 @@ def reverse_generator(n: int) -> list[int]:
 
 
 def duplicates_generator(n: int, seed: int) -> list[int]:
+    """Создаёт список с большим количеством повторяющихся элементов"""
     if type(n) is not int:
         raise TypeError("n должно быть целым числом")
     if n < 0:
@@ -48,6 +52,7 @@ def duplicates_generator(n: int, seed: int) -> list[int]:
 
 
 def nearly_sorted_generator(n: int, seed: int) -> list[int]:
+    """Создаёт почти отсортированный список целых чисел"""
     if type(n) is not int:
         raise TypeError("n должно быть целым числом")
     if n < 0:

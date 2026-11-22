@@ -1,4 +1,5 @@
 def fibonacci_iter(n: int) -> int:
+    """Вычисляет n-е число Фибоначчи итеративным способом"""
     if type(n) is not int:
         raise TypeError("n должно быть целым числом")
     if n < 0:
@@ -11,6 +12,7 @@ def fibonacci_iter(n: int) -> int:
 
 
 def fibonacci_recursion(n: int) -> int:
+    """Вычисляет n-е число Фибоначчи рекурсивным способом"""
     if type(n) is not int:
         raise TypeError("n должно быть целым числом")
     if n < 0: 
